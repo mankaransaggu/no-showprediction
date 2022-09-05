@@ -7,7 +7,7 @@ import pandas as pd
 
 app=Flask(__name__)
 ## Load the model
-regmodel=pickle.load(open('regmodel.pkl','rb'))
+regmodel=pickle.load(open('DT_Model.pkl','rb'))
 scalar=pickle.load(open('scaling.pkl','rb'))
 @app.route('/')
 def home():
@@ -29,7 +29,7 @@ def predict():
     final_input=scalar.transform(np.array(data).reshape(1,-1))
     print(final_input)
     output=regmodel.predict(final_input)[0]
-    return render_template("home.html",prediction_text="The House price prediction is {}".format(output))
+    return render_template("home.html",prediction_text="The preson will be present at the appointment : {}".format(output))
 
 
 
